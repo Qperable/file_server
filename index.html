@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="shortcut icon" href="./public/favicon.ico" type="image/x-icon">
-    <title>zp文件服务器</title>
+    <title>十黑文件服务器</title>
     <script src="./public/js/jq.js"></script>
     <link rel="stylesheet" href="./public/css/index.css">
 </head>
@@ -45,8 +45,8 @@
 
 
     <script>
-        // 前端限制上传的文件最大为1GB, 程序员可以在浏览器控制台修改maxFileSize的值用来上传更大的文件, 后端限制最大10GB
-        let maxFileSize = 1 * 1024 * 1024 * 1024;
+        // 前端限制上传的文件最大为5GB, 程序员可以在浏览器控制台修改maxFileSize的值用来上传更大的文件, 后端限制最大10GB
+        let maxFileSize = 5 * 1024 * 1024 * 1024;
 
         let fileCount = document.getElementById('fileCount');
 
@@ -54,7 +54,7 @@
         window.onload = function() {
             // 获取文件信息
             $.ajax({
-                url: '/getAllFileInfo',
+                url: '/fileServer/getAllFileInfo',
                 type: 'get',
                 success(d) {
                     d = JSON.parse(d);
@@ -101,7 +101,7 @@
 
             var fd = new FormData(document.forms['uploadFileForm']);
             $.ajax({
-                url: '/uploadFile',
+                url: '/fileServer/uploadFile',
                 type: 'post',
                 data: fd,
                 contentType: false, // 取消自动的设置请求头
@@ -141,7 +141,7 @@
                 if (!confirm("确认删除？")) return;
 
                 $.ajax({
-                    url: '/deleteFile?' + fileName,
+                    url: '/fileServer/deleteFile?' + fileName,
                     type: 'get',
                     success(d) {
                         console.log("d: ", d);
@@ -185,6 +185,7 @@
                 document.cookie = cookie_key + '=0;expires=' + new Date(0).toUTCString()
             })
             location.reload();
+            window.location.href= "http://www.fivefiveopen.cn/";
         }
 
 

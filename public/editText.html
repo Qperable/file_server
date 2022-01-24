@@ -75,7 +75,7 @@
         showFileName.textContent = fileName;
 
         $.ajax({
-            url: '/' + fileName,
+            url: '/fileServer/' + fileName,
             type: 'get',
             success(d) {
                 console.log("d: ", d);
@@ -88,7 +88,7 @@
 
         modifyBtn.onclick = function() {
             $.ajax({
-                url: '/modifyTextFile?' + fileName,
+                url: '/fileServer/modifyTextFile?' + fileName,
                 type: 'post',
                 data: textareaEle.value,
                 success(d) {

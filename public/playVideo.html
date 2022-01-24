@@ -22,7 +22,7 @@
 </head>
 
 <body>
-    <h3 class="font-art" onclick="location.href='/'">视频无法播放请检查身份验证信息是否过期</h3>
+    <h3 class="font-art" onclick="location.href='/'">如视频无法播放请检查身份验证信息是否过期</h3>
 
     <div style='width:90%;margin:auto;'>
         <h3 id="fileName"></h3>
@@ -31,8 +31,10 @@
 
     <script>
         let src = location.search.slice(1);
-        playVideo.src = '/' + src;
+        playVideo.src = '/fileServer/' + src;
         fileName.textContent = decodeURI(src);
+        
+        console.log(decodeURI(playVideo.src), "文件路径");
     </script>
 </body>
 

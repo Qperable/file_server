@@ -85,7 +85,7 @@
 
         submit_password.onclick = function() {
             $.ajax({
-                url: '/identityVerify',
+                url: '/fileServer/identityVerify',
                 type: 'post',
                 data: JSON.stringify({
                     user: user.value,

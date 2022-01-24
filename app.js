@@ -45,6 +45,7 @@ function handle404(res, fileDir) {
 var server = http.createServer(function(req, res) {
 
     let url = decodeURI(req.url);
+    url = url.replace(/^\/fileServer/g, "")
     console.log("url: ", url);
 
     let method = req.method.toLowerCase()
